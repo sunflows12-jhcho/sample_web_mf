@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-web-deployment
+  labels:
+    app: sample-web
+spec:
+  replicas: 2  # 가용성을 위해 2개의 포드 실행
+  selector:
+    matchLabels:
+      app: sample-web
+  template:
+    metadata:
+      labels:
+        app: sample-web
+    spec:
+      containers:
+      - name: sample-web-container
+        image: sunflows12/sample_web:latest # Jenkins 파이프라인이 이 부분을 수정하게 됩니다.
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
