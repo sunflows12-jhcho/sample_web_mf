@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: sample-web-container
-        image: sunflows12/sample_web:latest # Jenkins 파이프라인이 이 부분을 수정하게 됩니다.
+        image: sunflows12/sample_web:10
         ports:
         - containerPort: 80
         resources:
